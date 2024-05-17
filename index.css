@@ -1,0 +1,117 @@
+/*--------------- Default Styles (Mobile-first Approach)  --------------- */
+*, ::before, ::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Smythe";
+    src: url('assets/fonts/Smythe-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url('assets/fonts/Inter-VariableFont_slnt\,wght.ttf') format('truetype');
+}
+
+:root {
+    /* colors */
+    --white: #FFFFFF;
+    --black: #000000;
+    --grey: #8B8B8B;
+    --grn-button: #16DB99;
+
+    /* typography */
+    font-size: 20px;
+    font-family: "Smythe", serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    width: 100%;
+    max-width: 600px;
+    background-image: url("assets/ferks-guare-KEZdWfYD-ow-unsplash.jpg");
+    background-position: center;
+    background-size: 100%;
+    padding: 47px 21px 70px 21px;
+    color: var(--white);
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 39px;
+}
+h2 {
+    font-weight: normal;
+    font-size: 22px;
+}
+
+main {
+    width: 100%;
+    max-width: 600px;
+    padding-left: 23px; 
+    padding-right: 23px;
+}
+
+#menu {
+    padding-top: 22px;
+}
+.item {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid var(--grey);
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+.item-emoji {
+    font-size: 3.5rem;
+    width: 20%;
+}
+.item-info {
+    width: 35%; 
+    line-height: 1.5;
+}
+.item-name {
+    font-size: 28px;
+    font-weight: bold;
+}
+.item-ingredients {
+    font-size: 16px;
+    color: var(--grey);
+}
+button {
+    border-radius: 100%;
+    border: 1px solid var(--grey);
+    background-color: var(--white);
+    width: 50px;
+    height: 50px;
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 200;
+}
+
+/*--------------- 600px+ Width Styles --------------- */
+@media only screen and (min-width: 600px) {
+    header {
+        padding: 47px 47px 70px 47px;
+    }
+    main {
+        padding-left: 46px; 
+        padding-right: 46px;
+    }    
+    .item-emoji {
+        width: 100px; 
+    }
+    .item-info {
+        width: 60%; 
+    }
+}
