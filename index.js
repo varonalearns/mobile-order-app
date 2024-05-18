@@ -1,7 +1,7 @@
 import { menuArray } from "./data.js"
 
-const menuEl = document.getElementById("menu")
-
+// Create the menu based on data
+const menuEl = document.getElementById("menu");
 menuArray.forEach( (menuItem) => {
     const foodSection = document.createElement("section")
     foodSection.className = "item";
@@ -12,7 +12,59 @@ menuArray.forEach( (menuItem) => {
         <p class="item-ingredients">${menuItem.ingredients}</p>
         <p class="item-price">$${menuItem.price}</p>
     </div>
-    <button>+</button>
+    <button class="add-btn" id="${menuItem.id}">+</button>
     `;
     menuEl.append(foodSection);
 });
+
+// Create and hide Your Order and Total Price sections and Complete Order button
+const yourOrderSection = document.createElement("section")
+yourOrderSection.setAttribute("id", "your-order")
+yourOrderSection.innerHTML = `
+    <h2>Your Order</h2>
+`;
+menuEl.append(yourOrderSection);
+
+const totalPrice = document.createElement("section");
+totalPrice.setAttribute("id", "total-price");
+totalPrice.innerHTML = `
+    <span>Total Price: </span>
+    <span id="tot-num"></span>
+`;
+menuEl.append(totalPrice)
+
+const completeOrderBtn = document.createElement("button");
+completeOrderBtn.setAttribute("id", "complete-order-btn");
+completeOrderBtn.textContent = "Complete order";
+menuEl.append(completeOrderBtn);
+
+// Add items to Your Order section
+const btnEl = document.querySelectorAll("button");
+function addFoodItem() {
+    let total = 0;
+    btnEl.forEach( (btn) => {
+        btn.addEventListener("click", function() {
+            // Reveal Your Order and Total Price sections when any button clicked
+            yourOrderSection.style.display = "block";
+            totalPrice.style.display = "flex";
+            completeOrderBtn.style.display = "block";
+
+            // Add items to Your Order
+            const addItem = document.createElement("div");
+            addItem.className = "added-item";
+            addItem.innerHTML = `
+                <div class="added-item-info">
+                    <span>${menuArray[btn.id].name}</span>
+                    <button class="remove-btn">remove</button>
+                </div>
+                <span>$${menuArray[btn.id].price}</span>
+            `;
+            yourOrderSection.append(addItem);
+
+            // Update total price
+            total += menuArray[btn.id].price;
+            document.getElementById("tot-num").textContent = `$${total}`;
+        })
+    })
+}
+addFoodItem();

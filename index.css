@@ -88,7 +88,7 @@ main {
     font-size: 16px;
     color: var(--grey);
 }
-button {
+.add-btn {
     border-radius: 100%;
     border: 1px solid var(--grey);
     background-color: var(--white);
@@ -97,6 +97,59 @@ button {
     font-family: "Inter", sans-serif;
     font-size: 32px;
     font-weight: 200;
+}
+
+#your-order {
+    padding-top: 47px;
+    text-align: center;
+    font-weight: 500;
+    display: none; /* Changes to block when items added to Your Order */
+}
+#your-order h2 {
+    font-size: 28px;
+    margin-bottom: 64px;
+}
+
+.added-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+.added-item-info span {
+    font-size: 28px;
+    margin-right: 10px;
+}
+.remove-btn {
+    border: none;
+    background-color: var(--white);
+    color: var(--grey);
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+}
+
+#total-price {
+    display: none; /* Changes to flex when items added to Your Order */
+    border-top: 2px solid var(--black);
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 22px;
+}
+#total-price span:first-child {
+    font-size: 28px;
+}
+
+#complete-order-btn {
+    display: none; /* Changes to block when items added to Your Order */
+    width: 100%;
+    border: none;
+    color: var(--white);
+    background-color: var(--grn-button);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    height: 60px;
+    margin: 53px auto;
 }
 
 /*--------------- 600px+ Width Styles --------------- */
