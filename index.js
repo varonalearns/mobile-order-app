@@ -40,8 +40,8 @@ menuEl.append(completeOrderBtn);
 
 // Add items to Your Order section
 const btnEl = document.querySelectorAll(".add-btn");
+let total = 0; // Global value for keep track of price
 function renderYourOrderSection() {
-    let total = 0;
     btnEl.forEach( (btn) => {
         btn.addEventListener("click", function() {
             // Reveal Your Order and Total Price sections when any button clicked
@@ -57,17 +57,33 @@ function renderYourOrderSection() {
                     <span>${menuArray[btn.id].name}</span>
                     <button class="remove-btn">remove</button>
                 </div>
-                <span>$${menuArray[btn.id].price}</span>
+                <span class="price">$${menuArray[btn.id].price}</span>
             `;
             yourOrderSection.append(addItem);
 
-            // Update total price
-            total += menuArray[btn.id].price;
-            document.getElementById("tot-num").textContent = `$${total}`;
+            updateTotalPrice(addItem);
+            removeItems(addItem);
         })
     })
 }
 renderYourOrderSection();
+
+// Update price of items
+function updateTotalPrice(addItem) {
+    total += parseInt(addItem.querySelector(".price").textContent.replace("$", ""));
+    document.getElementById("tot-num").textContent = `$${total}`;
+}
+
+// Remove food items from Your Order section and update total price
+function removeItems(addItem) {
+    const rmvBtn = addItem.querySelector(".remove-btn");
+    rmvBtn.addEventListener("click", function() {
+        addItem.remove();
+        let removePrice = parseInt(addItem.querySelector(".price").textContent.replace("$", ""));
+        total -= removePrice;
+        document.getElementById("tot-num").textContent = `$${total}`;
+    })
+}
 
 // Unhide Payment Modal when Complete Order button is clicked.
 function openPaymentModal() {
@@ -81,6 +97,15 @@ openPaymentModal();
 const getPaymentBtnEl = document.getElementById("payment-btn");
 function closePaymentModal() {
     getPaymentBtnEl.addEventListener("click", function(event) {
+        // Check that input fields are not empty before closing
+        const nameInput = document.getElementById("name").value;
+        const cardNumInput = document.getElementById("card-number").value;
+        const cardCVV = document.getElementById("card-cvv").value;
+
+        if (!(nameInput && cardNumInput && cardCVV)) {
+            getPaymentBtnEl.removeEventListener("click");
+        }
+
         // Close Payment Modal and other sections
         event.preventDefault();
         document.getElementById("payment-container").style.display = "none";
@@ -89,16 +114,15 @@ function closePaymentModal() {
         completeOrderBtn.style.display = "none";
 
         // Create confirmation message
-        const customerName = document.getElementById("name").value;
         const confirmationMsg = document.createElement("div");
         confirmationMsg.className = "confirmation-msg";
-        confirmationMsg.textContent = `Thanks, ${customerName}! Your order is on the way!`
+        confirmationMsg.textContent = `Thanks, ${nameInput}! Your order is on the way!`
         menuEl.append(confirmationMsg);
 
-        // reload page after 5 seconds
+        // reload page after 4 seconds
         setTimeout(function() {
             window.location.reload();
-        }, 5000);
+        }, 4000);
     })
 }
 closePaymentModal();
