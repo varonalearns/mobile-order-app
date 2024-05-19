@@ -152,6 +152,70 @@ main {
     margin: 53px auto;
 }
 
+/* Payment Modal */
+#payment-container {
+    display: none; /* Change to blocked when Complete Order button is clicked */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+}
+
+.payment-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem 1.5rem;
+    width: 18rem;
+}
+
+.payment-content h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 46px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.payment-content input {
+    width: 100%;
+    border: 1px solid var(--grey);
+    height: 50px;
+    margin-bottom: 24px;
+    padding: 16px 23px;
+}
+
+.payment-content input[value] {
+    color: var(--grey);
+    font-family: "Inter", sans-serif;
+}
+.payment-content button {
+    width: 100%;
+    border: none;
+    color: var(--white);
+    background-color: var(--grn-button);
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    height: 50px;
+}
+
+.confirmation-msg {
+    margin-top: 45px;
+    margin-bottom: 45px;
+    text-align: center;
+    width: 100%;
+    color: #065F46;
+    background-color: #ECFDF5;
+    font-size: 32px;
+    padding: 50px 25px;
+}
+
 /*--------------- 600px+ Width Styles --------------- */
 @media only screen and (min-width: 600px) {
     header {
@@ -167,4 +231,11 @@ main {
     .item-info {
         width: 60%; 
     }
+    /* Payment Modal */
+
+    .payment-content {
+        padding: 2rem 1.5rem;
+        width: 23rem;
+    }
+
 }
