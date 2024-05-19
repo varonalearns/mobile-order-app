@@ -28,10 +28,10 @@ Stretch Goals:
 - Vanilla JavaScript
 
 ### What I learned
-
+I learned a lot working on this project. A LOT. Figuring out how to call functions and in what order to get the results that I want was a long and arduous process. Once I took a step back though, and really thought about what I wanted to accomplish, I managed to get the results that I have now. Even though I know there is probably some mistakes getting to the results that I have, just trying to figure out how to implement this project was a lot of fun.
 
 ### Continued development
-
+I hope to come back to this project and implement some of the stretch goals. Maybe even make a full blown app to add to my portfolio. There is definitely more that I need to learn and hope that with more experience I can make this project better.
 
 ### Useful resources
 
